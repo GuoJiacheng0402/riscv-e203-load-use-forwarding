@@ -248,3 +248,8 @@ This ensures strict adherence to the RISC-V ISA specification.
 * Based on the [Hummingbirdv2 E203](https://github.com/riscv-mcu/e203_hbirdv2) open-source core.
 * Course: Computer Architecture & Organization.
 * Licensed under Apache 2.0.
+
+---
+*I hope this project serves as a helpful reference for your studies.*
+
+*Wish you a productive and enjoyable experiment time!*
