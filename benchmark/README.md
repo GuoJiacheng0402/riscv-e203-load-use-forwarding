@@ -1,5 +1,11 @@
 # CoreMark Benchmark with Enhanced Pipeline Performance Analysis
 
+![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+![RISC-V](https://img.shields.io/badge/RISC--V-Compatible-green.svg)
+![CoreMark](https://img.shields.io/badge/CoreMark-1.0-orange.svg)
+![Educational](https://img.shields.io/badge/Purpose-Educational-purple.svg)
+
+
 **Educational Resource for Computer Architecture Course (Undergraduate Level)**
 
 This is an enhanced version of the EEMBC CoreMark benchmark, specifically designed for computer architecture education with detailed performance analysis and debugging features.
