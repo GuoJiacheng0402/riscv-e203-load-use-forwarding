@@ -2,7 +2,6 @@
 
 [![RISC-V](https://img.shields.io/badge/ISA-RISC--V-blue.svg)](https://riscv.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
-[![University](https://img.shields.io/badge/University-Your%20University-9cf.svg)](SCUT)
 
 *Developed by **Jiacheng Guo**.*
 
