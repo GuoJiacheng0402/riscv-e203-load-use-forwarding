@@ -216,11 +216,26 @@ This ensures strict adherence to the RISC-V ISA specification.
 
 ---
 
-## 📂 Project Structure
 
-* `core/e203_exu_disp.v`: Modified Dispatch unit (Hazard detection & MUX).
-* `core/e203_exu.v`: Modified Execution top-level (Signal wiring).
-* `benchmark/`: CoreMark build scripts and logs.
+## 📁 Repository Structure
+
+```
+.
+├── README.md                    # Main documentation
+├── QUICK_START.md               # 10-minute getting started guide
+│
+├── core/                        # Modified E203 Verilog files
+│   ├── e203_exu_disp.v          # Dispatcher with forwarding logic
+│   ├── e203_exu.v               # Execution unit with signal routing
+│   └── README_Load_Use_Forwarding.md  # Chinese detailed explanation
+│
+└── benchmark/                   # CoreMark with educational enhancements
+    ├── README.md                # Benchmark documentation
+    └── coremark/                # CoreMark source code
+
+```
+
+---
 
 ## 🚀 Getting Started
 
@@ -230,6 +245,6 @@ This ensures strict adherence to the RISC-V ISA specification.
 
 ## 📄 License & Acknowledgments
 
-* Based on the [Hummingbird E203](https://github.com/SI-RISCV/e200_opensource) open-source core.
+* Based on the [Hummingbirdv2 E203](https://github.com/riscv-mcu/e203_hbirdv2) open-source core.
 * Course: Computer Architecture & Organization.
 * Licensed under Apache 2.0.
