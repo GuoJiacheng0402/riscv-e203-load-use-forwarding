@@ -1,22 +1,9 @@
- CoreMark Benchmark with Enhanced Pipeline Performance Analysis
+# CoreMark Benchmark with Enhanced Pipeline Performance Analysis
 
 **Educational Resource for Computer Architecture Course (Undergraduate Level)**
 
 This is an enhanced version of the EEMBC CoreMark benchmark, specifically designed for computer architecture education with detailed performance analysis and debugging features.
 
----
-
-## 📚 Table of Contents
-
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Quick Start](#quick-start)
-- [Understanding the Output](#understanding-the-output)
-- [Common Issues and Solutions](#common-issues-and-solutions)
-- [How CoreMark Works](#how-coremark-works)
-- [Pipeline Optimization Guide](#pipeline-optimization-guide)
-- [Educational Use](#educational-use)
-- [References](#references)
 
 ---
 
@@ -80,6 +67,65 @@ It tests three core algorithms commonly found in embedded systems:
 - Visual indicators (✓/✗) for pass/fail
 - Detailed explanations of metrics
 - Debugging hints and suggestions
+
+------
+
+## 🚀 Key Innovations
+
+### 1. Educational Output Format
+
+**Before (Standard CoreMark):**
+```
+CoreMark 1.0 : 36.347035 / GCC14.2.1 ... / STACK
+```
+
+**After (Our Enhancement):**
+```
+========================================================
+[Pipeline Performance Analysis]
+========================================================
+
+--- Core Performance Metrics ---
+CPI (Cycles Per Instruction): 1.919271
+IPC (Instructions Per Cycle): 0.521031
+IPC Status                  : GOOD (0.5-0.8)
+
+--- Module Execution Status ---
+List Benchmark              : EXECUTED
+  Status                    : PASS ✓
+Matrix Benchmark            : EXECUTED
+  Status                    : PASS ✓
+
+--- Suggestions for Pipeline Optimization ---
+• Consider optimizing data hazards and control hazards
+• Check for load-use delays and branch prediction misses
+```
+
+### 2. Diagnostic Intelligence
+
+When things fail, we explain **why** and **how to fix it**:
+
+```
+--- CRC Validation Failure Diagnosis ---
+Possible causes for CRC mismatch:
+1. Hardware Implementation Issues:
+   • Data hazard handling (RAW/WAR/WAW)
+   • Branch prediction or control flow
+   [...]
+4. Debug Steps:
+   • Enable CORE_DEBUG mode to trace execution
+   • Compare with a known-good reference implementation
+   • Run with validation seeds (0,0,0x66) first
+```
+
+### 3. Real Understanding
+
+We explain **how CoreMark actually works**, not just what it does:
+
+- Matrix and State tests are **embedded in list sorting**
+- Called through `calc_func()` during `cmp_complex()`
+- Creates realistic, data-dependent control flow
+- This is **crucial** for understanding results
 
 ---
 
