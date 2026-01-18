@@ -3,6 +3,17 @@
 [![RISC-V](https://img.shields.io/badge/ISA-RISC--V-blue.svg)](https://riscv.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
+> [!CAUTION]
+> **Academic Integrity Notice (SCUT)**
+> 
+> The author is currently **actively enrolled in this course**, and this repository is made public
+> **solely as the source-code reference attached to the author's own assignment submission**.
+>  
+> Do not copy, reuse, or submit any part of this repo (including modified versions) for graded coursework.
+> Violations may constitute plagiarism under applicable SCUT academic integrity rules.
+
+---
+
 *Developed by **Jiacheng Guo**.*
 
 A final project for the *Computer Architecture & Organization* course (Experiment 4), implementing hardware data forwarding to optimize the E203 RISC-V processor pipeline.
