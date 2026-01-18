@@ -21,51 +21,9 @@ This enhanced CoreMark implementation adds **comprehensive performance metrics**
 - Benchmark validation
 - Performance debugging
 
----
-
-## Key Features
-
-### Standard CoreMark Features
--  EEMBC CoreMark 1.0 compliant
--  CRC validation for correctness
--  Three benchmark algorithms (List, Matrix, State)
--  Multiple memory modes (Static, Heap, Stack)
-
-### Enhanced Features for Education
-
-#### Detailed Performance Metrics
-- **Raw Hardware Counters**
-  - Total Cycles (mcycle CSR)
-  - Total Instructions Retired (minstret CSR)
-  - Execution Time
-
-- **Core Performance Metrics**
-  - CPI (Cycles Per Instruction)
-  - IPC (Instructions Per Cycle)
-  - Actual CPU Frequency
-  - MIPS (Million Instructions Per Second)
-
-- **Benchmark Efficiency**
-  - Iterations/Second
-  - CoreMark/MHz (normalized score)
-  - Cycles per Iteration
-  - Instructions per Iteration
-
-#### Automatic Performance Analysis
-- IPC status rating (EXCELLENT/GOOD/FAIR/NEEDS OPTIMIZATION)
-- Per-module CRC validation status
-- Pipeline optimization suggestions
-- Diagnostic guidance for CRC failures
-
-#### Student-Friendly Output
-- Clear, structured output format
-- Visual indicators (✓/✗) for pass/fail
-- Detailed explanations of metrics
-- Debugging hints and suggestions
-
 ------
 
-## Key Innovations
+## What's New
 
 ### 1. Educational Output Format
 
@@ -189,54 +147,6 @@ State Machine Benchmark     : EXECUTED
 CRC Validation              : PASS ✓
 ```
 
----
-
-## Understanding the Output
-
-### CPI (Cycles Per Instruction)
-
-**Formula:** `Total Cycles / Total Instructions`
-
-**Interpretation:**
-- **Lower is better**
-- Ideal: ~1.0 for single-issue in-order pipeline
-- Reality: 1.5-3.0 for complex embedded processors
-- >3.0: Indicates significant pipeline stalls
-
-**Example:** CPI = 1.92 means each instruction takes an average of 1.92 cycles.
-
-### IPC (Instructions Per Cycle)
-
-**Formula:** `Total Instructions / Total Cycles`
-
-**Interpretation:**
-- **Higher is better** (inverse of CPI)
-- Rating scale:
-  - IPC > 0.8: **EXCELLENT** 
-  - IPC 0.5-0.8: **GOOD** 
-  - IPC 0.3-0.5: **FAIR** 
-  - IPC < 0.3: **NEEDS OPTIMIZATION**
-
-**Example:** IPC = 0.52 means ~0.52 instructions complete per cycle on average.
-
-### CoreMark/MHz
-
-**Formula:** `(Total Iterations × 1,000,000) / Total Cycles`
-
-**Interpretation:**
-- Frequency-normalized benchmark score
-- Allows fair comparison across different CPU frequencies
-- Reflects **instruction efficiency** rather than raw speed
-- Higher values indicate better architecture/implementation
-
-### MIPS (Million Instructions Per Second)
-
-**Formula:** `Total Instructions / Execution Time / 1,000,000`
-
-**Interpretation:**
-- Traditional throughput metric
-- Depends on both clock frequency and IPC
-- **Note:** Not the same as "MIPS architecture"
 
 ---
 
@@ -429,85 +339,7 @@ ee_s16 calc_func(ee_s16 *pdata, core_results *res) {
 
 ---
 
-## Pipeline Optimization Guide
-
-### Understanding Your Baseline
-
-**Example Baseline Results:**
-```
-CPI: 2.50
-IPC: 0.40
-IPC Status: FAIR (0.3-0.5, room for improvement)
-```
-
-### Optimization Strategies
-
-#### 1. Data Hazard Optimization
-
-**Goal:** Reduce RAW hazard stalls
-
-**Techniques:**
-- **Forwarding/Bypassing:** Forward results from EX and MEM stages
-- **Out-of-Order Execution:** Execute independent instructions during stalls
-- **Scoreboarding:** Track register dependencies
-
-**Expected Improvement:** CPI reduction of 20-30%
-
-#### 2. Control Hazard Optimization
-
-**Goal:** Reduce branch misprediction penalty
-
-**Techniques:**
-- **Branch Prediction:** Implement 2-bit saturating counters
-- **Branch Target Buffer (BTB):** Cache branch target addresses
-- **Early Branch Resolution:** Calculate branch in ID stage
-- **Delayed Branching:** Execute branch delay slot
-
-**Expected Improvement:** CPI reduction of 10-20%
-
-#### 3. Structural Hazard Elimination
-
-**Goal:** Remove resource conflicts
-
-**Techniques:**
-- **Separate Instruction/Data Caches:** Avoid memory port conflicts
-- **Pipelined Multiplier:** Multi-cycle operations don't stall pipeline
-- **Dual-Port Register File:** Simultaneous read/write
-
-**Expected Improvement:** CPI reduction of 5-15%
-
-### Measuring Improvement
-
-**Before Optimization:**
-```
-CPI: 2.50
-CoreMark/MHz: 1.50
-```
-
-**After Optimization:**
-```
-CPI: 1.25  (50% reduction!)
-CoreMark/MHz: 3.00  (2× improvement!)
-```
-
-**Speedup Calculation:**
-```
-Speedup = CPI_old / CPI_new = 2.50 / 1.25 = 2.0×
-```
-
-### Realistic Targets
-
-| Pipeline Type | Expected CPI | Expected IPC |
-|--------------|-------------|-------------|
-| Simple 5-stage (no forwarding) | 2.5 - 3.5 | 0.29 - 0.40 |
-| 5-stage with forwarding | 1.5 - 2.0 | 0.50 - 0.67 |
-| 5-stage with forwarding + branch prediction | 1.2 - 1.5 | 0.67 - 0.83 |
-| Superscalar (2-way) | 0.8 - 1.2 | 0.83 - 1.25 |
-
----
-
 ## Debugging Tips
-
 ### Enable Verbose Output
 
 ```c
@@ -571,21 +403,11 @@ This makes it easier to:
 - [RISC-V ISA Specification](https://riscv.org/technical/specifications/)
 - [RISC-V Privileged Spec](https://github.com/riscv/riscv-isa-manual) (for CSR details)
 
-### Computer Architecture Textbooks
-- **Hennessy & Patterson:** "Computer Architecture: A Quantitative Approach"
-- **Patterson & Hennessy:** "Computer Organization and Design: The Hardware/Software Interface"
-
-### Performance Counter Documentation
-- **mcycle:** Counts clock cycles (CSR 0xC00/0xC80)
-- **minstret:** Counts retired instructions (CSR 0xC02/0xC82)
-- For RV32: Use `mcycleh` and `minstreth` for upper 32 bits
-
 ---
 
 ## License
 
 This project is based on EEMBC CoreMark, which is licensed under the Apache License 2.0.
-
 The enhanced performance analysis features are provided for educational purposes.
 
 
