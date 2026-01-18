@@ -1,27 +1,8 @@
 # Quick Start Guide
 
-> **Get up and running with the Load-Use forwarding optimization in 10 minutes**
-
 ---
 
-## 🚀 What This Project Does
-
-Implements **data forwarding** in the E203 RISC-V processor to eliminate pipeline stalls, achieving:
-- **3.5% faster execution** (measured with CoreMark)
-- **No functional changes** to the ISA
-- **Full correctness** maintained
-
----
-
-## 📥 What You Need
-
-- E203 RISC-V development environment (FPGA board + Nuclei SDK)
-- Basic understanding of pipelined processors
-- Familiarity with Verilog (for understanding the changes)
-
----
-
-## 🔍 The Core Idea in 60 Seconds
+## The Core Idea
 
 ### Problem
 ```assembly
@@ -41,12 +22,12 @@ LSU Output ──(forwarding path)──► ALU Input
 
 ---
 
-## 📝 What We Changed
+## What We Changed
 
 ### Two Files Modified:
 
-1. **[core/e203_exu_disp.v](core/e203_exu_disp.v)** - Added forwarding logic (~15 lines)
-2. **[core/e203_exu.v](core/e203_exu.v)** - Connected LSU signals (~5 lines)
+1. **[core/e203_exu_disp.v](core/e203_exu_disp.v)** - Added forwarding logic
+2. **[core/e203_exu.v](core/e203_exu.v)** - Connected LSU signals
 
 ### Three Key Changes:
 
@@ -81,7 +62,7 @@ assign disp_o_alu_rs1 = rs1_fwd_match ? lsu_o_wbck_wdat
 
 ---
 
-## ⚠️ Critical Detail: The x0 Trap!
+## Critical Detail: The x0 Trap!
 
 **RISC-V Rule:** Register `x0` **always reads as zero**.
 
@@ -102,7 +83,7 @@ add  a1, x0, a2   # Read x0 → MUST get 0, NOT 0x1234!
 
 ---
 
-## 📊 Expected Results
+## Expected Results
 
 ### Before Optimization
 ```
@@ -127,7 +108,7 @@ State CRC:  0x8e3a ✓
 
 ---
 
-## 🛠️ Integration Steps
+## Integration Steps
 
 ### 1. Replace Core Files
 Copy the modified Verilog files to your E203 project:
@@ -168,7 +149,7 @@ screen /dev/ttyUSB0 115200
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Problem: CRC Validation Fails
 
@@ -216,7 +197,7 @@ wire rs1_fwd_match = lsu_o_valid
 
 ---
 
-## 📖 Understanding the Code
+## Understanding the Code
 
 ### Signal Flow Diagram
 
@@ -283,32 +264,3 @@ sw   x5, 0(x10)   # Cycle N:   Store doesn't write register
 add  x6, x5, x7   # Cycle N+1: x5 comes from register file
 ```
 
----
-
-## 🎯 Learning Objectives Checklist
-
-After studying this project, you should be able to:
-
-- [ ] Explain what a Load-Use hazard is
-- [ ] Describe how data forwarding eliminates stalls
-- [ ] Identify when forwarding is safe vs. when it's not
-- [ ] Understand why x0 requires special handling
-- [ ] Measure pipeline performance using CPI/IPC
-- [ ] Implement basic forwarding logic in Verilog
-- [ ] Debug functional correctness vs. performance issues
-
----
-
-## 💡 Key Takeaways
-
-1. **Data forwarding is a powerful optimization** that improves performance without changing the ISA
-2. **Correctness is paramount** - always validate with benchmarks
-3. **Edge cases matter** - special registers (like x0) need special handling
-4. **Small changes, measurable impact** - 20 lines of code → 3.5% speedup
-5. **Hardware/software co-design** - understanding both is essential
-
----
-
-*I hope this project serves as a helpful reference for your studies.*
-
-*Wish you a productive and enjoyable experiment time!*
