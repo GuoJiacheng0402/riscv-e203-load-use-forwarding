@@ -12,7 +12,6 @@
 > Do not copy, reuse, or submit any part of this repo (including modified versions) for graded coursework.
 > Violations may constitute plagiarism under applicable SCUT academic integrity rules.
 
----
 
 *Developed by **Jiacheng Guo**.*
 
