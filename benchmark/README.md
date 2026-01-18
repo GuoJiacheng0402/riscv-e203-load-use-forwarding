@@ -248,7 +248,7 @@ make compile ITERATIONS=4000 run
 
 ### The Clever Design: Embedded Test Execution
 
-CoreMark has a **unique architecture** that surprises many students:
+CoreMark cheats a little bit by embedding tests...
 
 #### What You Might Expect (But Wrong!)
 
