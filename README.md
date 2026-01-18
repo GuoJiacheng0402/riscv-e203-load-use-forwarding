@@ -228,7 +228,7 @@ This ensures strict adherence to the RISC-V ISA specification.
 ---
 
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 .
