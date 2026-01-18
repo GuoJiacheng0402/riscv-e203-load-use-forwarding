@@ -1,6 +1,6 @@
 # Quick Start Guide
 
----
+
 
 ## The Core Idea
 
