@@ -237,8 +237,7 @@ This ensures strict adherence to the RISC-V ISA specification.
 │
 ├── core/                        # Modified E203 Verilog files
 │   ├── e203_exu_disp.v          # Dispatcher with forwarding logic
-│   ├── e203_exu.v               # Execution unit with signal routing
-│   └── README_Load_Use_Forwarding.md  # Chinese detailed explanation
+│   └── e203_exu.v               # Execution unit with signal routing
 │
 └── benchmark/                   # CoreMark with educational enhancements
     ├── README.md                # Benchmark documentation
