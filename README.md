@@ -19,13 +19,13 @@
 
 ---
 
-## 📖 Project Overview
+## Project Overview
 
 This repository contains a Verilog implementation of **Load-Use Data Forwarding** for the Hummingbird E203 two-stage pipelined processor. By introducing a hardware forwarding path, this project eliminates pipeline stalls caused by Read-After-Write (RAW) dependencies, demonstrating a key microarchitectural optimization technique.
 
 ---
 
-## 📊 Performance Results
+## Performance Results
 
 We benchmarked the optimization using **CoreMark 1.0** (500 iterations) on an FPGA platform.
 
@@ -37,11 +37,13 @@ We benchmarked the optimization using **CoreMark 1.0** (500 iterations) on an FP
 | **CoreMark Score** | 36.35 | **37.61** | **+3.47%** ⬆️ |
 | **Validation** | PASS | **PASS** | Functional Correctness ✅ |
 
+*Note: Results may vary slightly depending on the FPGA synthesis strategy and timing constraints.*
+
 **Impact:** Eliminated approximately **7.4 million stall cycles**, improving execution efficiency without altering the processor's clock frequency or stage depth.
 
 ---
 
-## 🎯 The Challenge: Load-Use Hazards
+## The Challenge: Load-Use Hazards
 
 In the standard E203 pipeline, a **Load-Use hazard** forces a stall cycle when an instruction requires data immediately after a Load instruction:
 
@@ -51,7 +53,7 @@ add  x3, x1, x4     # Cycle 2: EX Stage (Needs data immediately) -> STALL
 ```
 
 ### The Solution: Forwarding (Bypassing)
-Instead of stalling to wait for the Register File writeback, we implemented a **forwarding path** that routes data directly from the LSU (Load-Store Unit) output to the ALU input.
+Stalling represents a waste of cycles. By inspecting the LSU output wire, we implemented a **forwarding path** that routes data directly from the LSU (Load-Store Unit) output to the ALU input.
 
 ```
          ┌──────────────┐
@@ -72,7 +74,7 @@ Instead of stalling to wait for the Register File writeback, we implemented a **
 
 ---
 
-## 🏗️ E203 Processor Architecture Overview
+## E203 Processor Architecture Overview
 
 The E203 is a **two-stage pipeline** RISC-V processor core designed for embedded applications:
 
@@ -111,7 +113,7 @@ The E203 is a **two-stage pipeline** RISC-V processor core designed for embedded
 - **OITF**: Outstanding Instruction Tracking FIFO for multi-cycle operations
 
 ---
-## 🔧 Implementation Details
+## Implementation Details
 
 ### Modified Files
 
@@ -246,19 +248,16 @@ This ensures strict adherence to the RISC-V ISA specification.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  Clone the repository.
 2.  Replace the original E203 RTL files with the modified versions in `core/`.
 3.  Run the simulation or synthesis using your standard E203 flow (Vivado/Verilator).
 
-## 📄 License & Acknowledgments
+## License & Acknowledgments
 
 * Based on the [Hummingbirdv2 E203](https://github.com/riscv-mcu/e203_hbirdv2) open-source core.
 * Course: Computer Architecture & Organization.
 * Licensed under Apache 2.0.
 
 ---
-*I hope this project serves as a helpful reference for your studies.*
-
-*Wish you a productive and enjoyable experiment time!*
