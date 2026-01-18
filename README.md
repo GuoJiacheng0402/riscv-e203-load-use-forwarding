@@ -17,8 +17,6 @@
 
 2026.01
 
-A final project for the *Computer Architecture & Organization* course (Experiment 4), implementing hardware data forwarding to optimize the E203 RISC-V processor pipeline.
-
 ---
 
 ## 📖 Project Overview
