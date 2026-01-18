@@ -13,7 +13,7 @@ This is an enhanced version of the EEMBC CoreMark benchmark, specifically design
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This enhanced CoreMark implementation adds **comprehensive performance metrics** to help students understand:
 - Pipeline efficiency (CPI/IPC)
@@ -21,30 +21,19 @@ This enhanced CoreMark implementation adds **comprehensive performance metrics**
 - Benchmark validation
 - Performance debugging
 
-### What is CoreMark?
-
-CoreMark® is an industry-standard benchmark that measures the performance of:
-- **Central Processing Units (CPUs)**
-- **Embedded Microcontrollers (MCUs)**
-
-It tests three core algorithms commonly found in embedded systems:
-1. **List Processing** - Linked list operations (find, sort, remove)
-2. **Matrix Operations** - Integer matrix multiplication
-3. **State Machine** - Finite state machine for input validation
-
 ---
 
-## ✨ Key Features
+## Key Features
 
 ### Standard CoreMark Features
-- ✅ EEMBC CoreMark 1.0 compliant
-- ✅ CRC validation for correctness
-- ✅ Three benchmark algorithms (List, Matrix, State)
-- ✅ Multiple memory modes (Static, Heap, Stack)
+-  EEMBC CoreMark 1.0 compliant
+-  CRC validation for correctness
+-  Three benchmark algorithms (List, Matrix, State)
+-  Multiple memory modes (Static, Heap, Stack)
 
 ### Enhanced Features for Education
 
-#### 📊 Detailed Performance Metrics
+#### Detailed Performance Metrics
 - **Raw Hardware Counters**
   - Total Cycles (mcycle CSR)
   - Total Instructions Retired (minstret CSR)
@@ -62,13 +51,13 @@ It tests three core algorithms commonly found in embedded systems:
   - Cycles per Iteration
   - Instructions per Iteration
 
-#### 🔍 Automatic Performance Analysis
+#### Automatic Performance Analysis
 - IPC status rating (EXCELLENT/GOOD/FAIR/NEEDS OPTIMIZATION)
 - Per-module CRC validation status
 - Pipeline optimization suggestions
 - Diagnostic guidance for CRC failures
 
-#### 🎓 Student-Friendly Output
+#### Student-Friendly Output
 - Clear, structured output format
 - Visual indicators (✓/✗) for pass/fail
 - Detailed explanations of metrics
@@ -76,7 +65,7 @@ It tests three core algorithms commonly found in embedded systems:
 
 ------
 
-## 🚀 Key Innovations
+## Key Innovations
 
 ### 1. Educational Output Format
 
@@ -135,7 +124,7 @@ We explain **how CoreMark actually works**, not just what it does:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -202,7 +191,7 @@ CRC Validation              : PASS ✓
 
 ---
 
-## 📖 Understanding the Output
+## Understanding the Output
 
 ### CPI (Cycles Per Instruction)
 
@@ -223,10 +212,10 @@ CRC Validation              : PASS ✓
 **Interpretation:**
 - **Higher is better** (inverse of CPI)
 - Rating scale:
-  - IPC > 0.8: **EXCELLENT** ✨
-  - IPC 0.5-0.8: **GOOD** ✅
-  - IPC 0.3-0.5: **FAIR** ⚠️
-  - IPC < 0.3: **NEEDS OPTIMIZATION** ❌
+  - IPC > 0.8: **EXCELLENT** 
+  - IPC 0.5-0.8: **GOOD** 
+  - IPC 0.3-0.5: **FAIR** 
+  - IPC < 0.3: **NEEDS OPTIMIZATION**
 
 **Example:** IPC = 0.52 means ~0.52 instructions complete per cycle on average.
 
@@ -251,7 +240,7 @@ CRC Validation              : PASS ✓
 
 ---
 
-## 🔧 Common Issues and Solutions
+## Common Issues and Solutions
 
 ### Issue 1: CRC Validation Failures
 
@@ -345,13 +334,13 @@ make compile ITERATIONS=4000 run
 
 ---
 
-## 🎓 How CoreMark Works
+## How CoreMark Works
 
 ### The Clever Design: Embedded Test Execution
 
 CoreMark has a **unique architecture** that surprises many students:
 
-#### ❌ What You Might Expect (But Wrong!)
+#### What You Might Expect (But Wrong!)
 
 ```c
 for (i=0; i<iterations; i++) {
@@ -361,7 +350,7 @@ for (i=0; i<iterations; i++) {
 }
 ```
 
-#### ✅ What Actually Happens
+#### What Actually Happens
 
 ```
 iterate()
@@ -440,7 +429,7 @@ ee_s16 calc_func(ee_s16 *pdata, core_results *res) {
 
 ---
 
-## 🏗️ Pipeline Optimization Guide
+## Pipeline Optimization Guide
 
 ### Understanding Your Baseline
 
@@ -517,7 +506,7 @@ Speedup = CPI_old / CPI_new = 2.50 / 1.25 = 2.0×
 
 ---
 
-## 🐛 Debugging Tips
+## Debugging Tips
 
 ### Enable Verbose Output
 
@@ -571,22 +560,6 @@ This makes it easier to:
 
 ---
 
-## 📊 Performance Comparison Table
-
-### Example Results (For Reference)
-
-| Implementation | CPI | IPC | CoreMark/MHz | Notes |
-|----------------|-----|-----|--------------|-------|
-| Simple 5-stage (baseline) | 2.50 | 0.40 | 1.50 | No forwarding |
-| + EX forwarding | 2.00 | 0.50 | 1.88 | 25% improvement |
-| + MEM forwarding | 1.70 | 0.59 | 2.21 | 18% additional |
-| + Branch prediction | 1.30 | 0.77 | 2.88 | 30% additional |
-| 2-way superscalar | 0.90 | 1.11 | 4.17 | 45% additional |
-
-*Note: Actual results will vary based on implementation details*
-
----
-
 ## 🔗 References
 
 ### Official CoreMark Resources
@@ -609,86 +582,10 @@ This makes it easier to:
 
 ---
 
-## 📝 License
+## License
 
 This project is based on EEMBC CoreMark, which is licensed under the Apache License 2.0.
 
 The enhanced performance analysis features are provided for educational purposes.
 
----
-
-## 💡 Tips for study
-
-### Understanding the Results
-
-**Q: Why is my IPC so low?**
-
-A: This is normal! Real-world code has:
-- Data dependencies (need to wait for previous results)
-- Memory latency (loads take multiple cycles)
-- Branch mispredictions (wrong path executed)
-- Resource conflicts (structural hazards)
-
-**Q: Can IPC be > 1.0?**
-
-A: Yes! With superscalar or out-of-order execution:
-- Multiple instructions issue per cycle
-- IPC can exceed 2.0 in modern processors
-- But harder to implement in hardware
-
-**Q: Why does the benchmark call Matrix/State indirectly?**
-
-A: To create realistic, unpredictable control flow:
-- Tests branch prediction under real conditions
-- Prevents compiler from over-optimizing
-- Mimics actual application behavior
-
-### Common Misconceptions
-
-**❌ MIPS = Performance**
-- Different architectures have different instruction counts for the same task
-- RISC vs CISC comparison issues
-- Use CoreMark/MHz for fair comparison
-
-**❌ Higher Clock = Better Performance**
-- A 1 GHz processor with IPC=0.5 performs worse than 500 MHz with IPC=1.0
-- Architecture efficiency matters more than raw frequency
-- Power consumption increases with frequency
-
-**❌ CRC Failure = Code Bug**
-- Often indicates hardware implementation issue
-- Check pipeline hazards first
-- Compiler optimizations can expose HW bugs
-
----
-
-## 🎯 Learning Objectives
-
-After completing exercises with this benchmark, you are expexted to understand:
-
-1. **Performance Metrics:**
-   - How to measure processor performance
-   - Relationship between CPI, IPC, and throughput
-   - Importance of frequency-normalized metrics
-
-2. **Pipeline Hazards:**
-   - Data hazards and forwarding
-   - Control hazards and branch prediction
-   - Structural hazards and resource conflicts
-
-3. **Hardware-Software Interaction:**
-   - How compiler optimizations affect performance
-   - Role of hardware performance counters
-   - Validation through CRC checking
-
-4. **Real-World Benchmarking:**
-   - Why standard benchmarks matter
-   - How to interpret benchmark results
-   - Limitations of synthetic benchmarks
-
----
-
-**Happy Benchmarking! 🚀**
-
-*Remember: Understanding WHY performance differs is more important than the numbers themselves.*
 
